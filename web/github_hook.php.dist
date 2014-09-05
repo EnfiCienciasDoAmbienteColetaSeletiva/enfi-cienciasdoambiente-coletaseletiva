@@ -1,5 +1,5 @@
 <?php 
 $data = json_decode($_POST['payload']);
 $commit = $data->commits[0]->id . "\n";
-file_put_contents(__DIR__ '/../github_hook/github_hook_queue', $commit, FILE_APPEND | LOCK_EX);
+file_put_contents(__DIR__ . '/../github_hook/github_hook_queue', $commit, FILE_APPEND | LOCK_EX);
 ?>

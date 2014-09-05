@@ -14,7 +14,7 @@ class UtilController extends Controller
      */
     public function gitVersionAction()
     {
-        $git_version = file_get_contents($this->container->getParameter('kernel.root_dir') . '/../git-current-commit.txt');
+        $git_version = file_get_contents($this->container->getParameter('kernel.root_dir') . '/../github_hook/git-current-commit.txt');
         return array('git_version' => $git_version);
     }
 }
