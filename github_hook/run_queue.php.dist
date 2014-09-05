@@ -1,0 +1,19 @@
+#!/usr/bin/php
+<?php
+
+$queue_file = 'github_hook_queue';
+$queue = file($queue_file, FILE_IGNORE_NEW_LINES);
+
+if (sizeof($queue) == 0) exit();
+if (strlen($queue[0]) !== 40) exit(); // Somente continua script se existir um hash na fila
+if (file_exists('deploy_active')) exit();
+
+// Início do deploy
+passthru('touch deploy_active');
+passthru('/bin/bash -c "cd /home/coletaseletiva/ln/sf_dev && ./deploy_dev.sh"');
+passthru('rm deploy_active');
+
+// Remover item da queue
+unset($queue[0]);
+file_put_contents($queue_file, implode("\n", $queue), LOCK_EX);
+?>
