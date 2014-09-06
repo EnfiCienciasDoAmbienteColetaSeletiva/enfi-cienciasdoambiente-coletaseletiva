@@ -1,6 +1,9 @@
 <?php 
 $data = json_decode($_POST['payload']);
+
+// Se não existir um hash, sai do script
+if (!isset($data->commits[0]->id) or strlen($data->commits[0]->id) != 40) exit();
+
 $commit = $data->commits[0]->id . "\n";
-// Configurar  caminho do arquivo de queue
 file_put_contents(__DIR__ . '/../github_hook/github_hook_queue', $commit, FILE_APPEND | LOCK_EX);
 ?>
