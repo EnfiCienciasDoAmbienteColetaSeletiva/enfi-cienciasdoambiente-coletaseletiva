@@ -30,6 +30,8 @@ echo '*** linking components_manual' && \
 ln -f -s -n ../components_manual web/components_manual && \
 echo '*** clearing prod cache' && \
 php app/console cache:clear --env=prod && \
+echo '*** generating bootstrap less file' && \
+php app/console braincrafted:bootstrap:generate && \
 echo '*** assetic dump' && \
 php app/console assetic:dump --env=prod && \
 echo '*** assets install' && \
@@ -39,5 +41,3 @@ php app/console doctrine:schema:update --dump-sql && \
 echo '*** disabling "Modo de manutenção"' && \
 mv web/app_bkp_maintenance.php web/app.php && \
 echo '*** success!'
-
-

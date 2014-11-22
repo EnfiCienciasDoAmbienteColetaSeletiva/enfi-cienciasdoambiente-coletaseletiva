@@ -103,3 +103,20 @@ hwi_oauth:
             type:                facebook
             client_id:           "%facebook_app_client_id%"
             client_secret:       "%facebook_app_client_secret%"
+
+# Bootstrap bundle
+braincrafted_bootstrap:
+    output_dir:
+    assets_dir: %kernel.root_dir%/../vendor/twbs/bootstrap
+    jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.10.2.js
+    less_filter: less # "less", "lessphp", "sass" or "none"
+    #fonts_dir: %kernel.root_dir%/../web/fonts # Returning error, option not found
+    auto_configure:
+        assetic: true
+        twig: true
+        knp_menu: true
+        knp_paginator: true
+    customize:
+        variables_file: %kernel.root_dir%/Resources/less/variables.less
+        bootstrap_output: %kernel.root_dir%/cache/dev/braincrafted_bootstrap.less
+        bootstrap_template: BraincraftedBootstrapBundle:Bootstrap:bootstrap.less.twig

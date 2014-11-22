@@ -27,7 +27,9 @@ echo '*** linking components' && \
 ln -f -s -n ../components web/components && \
 echo '*** linking components_manual' && \
 ln -f -s -n ../components_manual web/components_manual && \
-echo '*** clearing prod cache' && \
+echo '*** generating bootstrap less file' && \
+php app/console braincrafted:bootstrap:generate && \
+echo '*** assets install' && \
 php app/console assets:install web --symlink --relative && \
 echo '*** migrações que devem ser feitas no banco de dados' && \
 php app/console doctrine:schema:update --force && \
