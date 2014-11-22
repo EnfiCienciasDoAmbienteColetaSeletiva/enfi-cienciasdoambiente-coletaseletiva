@@ -1,13 +1,7 @@
 {% extends("::base.html.twig") %}
 
 {% block stylesheets %}
-<style>
-.footer {
-    font-size: 90%;
-    color: gray;
-    margin-top: 20px;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/enficienciasdoambientesite/css/style.css') }}" />
 {% endblock stylesheets %}
 
 {% block body %}
@@ -25,13 +19,13 @@
           <li><a href="{{ url("hwi_oauth_service_redirect", {service: "facebook", destination: "_user"}) }}">Entrar via Facebook</a></li>
           {% endif %}
         </ul>
-        <h3 class="text-muted">ReciclaLá - Um projeto de alunos da Engenharia Física da UFSCar</h3>
+        <img src="{{ asset('bundles/enficienciasdoambientesite/images/logo-reciclala.png') }}" />
       </div>
 
 {% block content %}{% endblock content %}
 
       <div class="footer">
-        <p>&copy; Cesar Rabahi, Diego Costa, Fernando Tateno, Filipe Hori, Rafael Santos. 2014</p>
+        <p>&copy; 2014 Cesar Rabahi, Diego Costa, Fernando Tateno, Filipe Hori, Rafael Santos. Projeto realizado por alunos de graduação em Engenharia Física para a disciplina Ciências do Ambiente para Engenharia Física, do Departamento de Hidrobiologia da Universidade Federal de São Carlos.</p>
         {{ render(controller('EnfiCienciasDoAmbienteCommonEntitiesBundle:Util:gitVersion')) }}
       </div>
 

@@ -2,6 +2,15 @@
 // Variables
 // --------------------------------------------------
 
+// Paleta feita pelo Filipe Hori:
+
+@palette_preto: #000000; 
+@palette_vermelho: #DB2929;
+@palette_rosa: #DE5050;
+@palette_amarelo: #F0DC5B;
+@palette_verde: #82E09E;
+@palette_laranja: #F58905;
+@palette_cinza: #333333;
 
 //== Colors
 //
@@ -13,11 +22,17 @@
 @gray-light:             lighten(#000, 60%);   // #999
 @gray-lighter:           lighten(#000, 93.5%); // #eee
 
-@brand-primary:         #428bca;
-@brand-success:         #5cb85c;
-@brand-info:            #5bc0de;
-@brand-warning:         #f0ad4e;
-@brand-danger:          #d9534f;
+//@brand-primary:         #428bca;
+//@brand-success:         #5cb85c;
+//@brand-info:            #5bc0de;
+//@brand-warning:         #f0ad4e;
+//@brand-danger:          #d9534f;
+
+@brand-primary:         @palette_rosa;
+@brand-success:         @palette_verde;
+@brand-info:            @palette_amarelo;
+@brand-warning:         @palette_vermelho;
+@brand-danger:          @palette_laranja;
 
 
 //== Scaffolding
@@ -27,7 +42,7 @@
 //** Background color for `<body>`.
 @body-bg:               #fff;
 //** Global text color on `<body>`.
-@text-color:            @gray-dark;
+@text-color:            @palette_preto;
 
 //** Global textual link color.
 @link-color:            @brand-primary;
@@ -149,7 +164,7 @@
 @btn-success-bg:                 @brand-success;
 @btn-success-border:             darken(@btn-success-bg, 5%);
 
-@btn-info-color:                 #fff;
+@btn-info-color:                 #000;
 @btn-info-bg:                    @brand-info;
 @btn-info-border:                darken(@btn-info-bg, 5%);
 
@@ -456,8 +471,8 @@
 //##
 
 @jumbotron-padding:              30px;
-@jumbotron-color:                inherit;
-@jumbotron-bg:                   @gray-lighter;
+@jumbotron-color:                #fff; 
+@jumbotron-bg:                   @palette_rosa;
 @jumbotron-heading-color:        inherit;
 @jumbotron-font-size:            ceil((@font-size-base * 1.5));
 
