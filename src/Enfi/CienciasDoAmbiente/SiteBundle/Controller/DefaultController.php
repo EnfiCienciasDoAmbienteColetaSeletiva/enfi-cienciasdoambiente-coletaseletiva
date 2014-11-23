@@ -16,7 +16,12 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
 
-        $encontrarPontoDeColeta = new \Enfi\CienciasDoAmbiente\SiteBundle\ValidationEntity\EncontrarPontoDeColeta;
+        if ($this->get('session')->get('encontrarPontoDeColeta')) {
+            $encontrarPontoDeColeta = $this->get('session')->get('encontrarPontoDeColeta');
+            $encontrarPontoDeColeta->tipoDeLixo = $this->getDoctrine()->getEntityManager()->merge($encontrarPontoDeColeta->tipoDeLixo);
+        } else {
+            $encontrarPontoDeColeta = new \Enfi\CienciasDoAmbiente\SiteBundle\ValidationEntity\EncontrarPontoDeColeta;
+        }
         $form = $this->createFormBuilder($encontrarPontoDeColeta)
             ->add('tipoDeLixo', 'entity', array('class' => 'Enfi\CienciasDoAmbiente\CommonEntitiesBundle\Entity\TipoDeLixo', 'property' => 'nome', 'label' => 'Tipo de lixo'))
             ->add('endereco', null, array('label' => 'Endereço ou CEP'))

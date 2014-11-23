@@ -12,21 +12,21 @@
   if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
           function(position) {
-              var pos = new google.maps.LatLng(position.coords.latitude,
-                                               position.coords.longitude);
-              geocoder = new google.maps.Geocoder();
-              geocoder.geocode(
-                {
-                    'latLng': pos
-                },
-                function(results, status) {
-                  console.log(status);
-                    console.log(results);
-                  if (status == google.maps.GeocoderStatus.OK) {
-                        $('#form_endereco').val(results[0].formatted_address);
-                  }
-              });
-
+              if ($('#form_endereco').val() == '') {
+                  $('#form_endereco').val('Obtendo localização aproximada...');
+                  var pos = new google.maps.LatLng(position.coords.latitude,
+                                                   position.coords.longitude);
+                  geocoder = new google.maps.Geocoder();
+                  geocoder.geocode(
+                    {
+                        'latLng': pos
+                    },
+                    function(results, status) {
+                      if (status == google.maps.GeocoderStatus.OK) {
+                            $('#form_endereco').val(results[0].formatted_address);
+                      }
+                  });
+              }
           }
       );
   }
@@ -38,7 +38,7 @@
 {% block content %}
 
       <div class="jumbotron">
-        <p class="lead">O jeito fácil de descartar as coisas que você não usa mais!</p>
+        <p class="lead"><b>Recicla Lá</b> :: A reciclagem perto de você!</p>
         {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
       </div>
 
