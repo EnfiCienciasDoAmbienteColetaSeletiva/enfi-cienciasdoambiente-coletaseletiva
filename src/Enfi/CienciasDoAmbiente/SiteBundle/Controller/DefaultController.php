@@ -39,6 +39,15 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/sobre", name="_about")
+     * @Template()
+     */
+    public function aboutAction()
+    {
+        return array();
+    }
+
+    /**
      * @Route("/user", name="_user")
      * @Template()
      */

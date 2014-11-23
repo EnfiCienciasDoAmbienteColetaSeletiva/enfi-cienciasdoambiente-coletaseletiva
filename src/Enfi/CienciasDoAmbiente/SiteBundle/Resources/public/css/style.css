@@ -1,4 +1,7 @@
-.header img { width: 400px; } 
+img {
+    max-width: 100%;
+}
+.header img { width: 400px; }
 .header {
     margin-bottom: 20px;
 }
@@ -6,4 +9,7 @@
     font-size: 90%;
     color: gray;
     margin-top: 20px;
+}
+.btn {
+    white-space: normal; 
 }

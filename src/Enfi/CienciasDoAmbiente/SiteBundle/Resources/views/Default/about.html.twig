@@ -1,0 +1,30 @@
+{% extends("EnfiCienciasDoAmbienteSiteBundle::base.html.twig") %}
+
+{% block content %}
+
+<h1>Sobre</h1>
+
+<p>Este projeto foi desenvolvido por alunos da disciplina Ciências do Ambiente para Engenharia Física, do Departamento de Hidrobiologia da Universidade Federal de São Carlos.</p>
+
+<p>Professor: Dr. Hugo Sarmento</p>
+
+<p>Autores:</p>
+
+<ul>
+<li>Cesar Rabahi: apoio geral</li>
+<li>Diego Costa: levantamento de informações gerais sobre reciclagem e de pontos de coleta seletiva em São Carlos, SP</li>
+<li>Edgar Aquino: apoio geral</li>
+<li>Fernando Tateno: planejamento de marketing</li>
+<li>Filipe Hori: planejamento de marketing, criação do logotipo, do vídeo institucional e de peças de marketing</li>
+<li>Rafael Santos: desenvolvimento/programação</li>
+</ul>
+
+<br/>
+
+<img src="{{ asset('bundles/enficienciasdoambientesite/images/logo-enfi.png') }}" />
+<img src="{{ asset('bundles/enficienciasdoambientesite/images/logo-ufscar.jpg') }}" />
+
+
+<!-- {{ render(controller('EnfiCienciasDoAmbienteCommonEntitiesBundle:Util:gitVersion')) }} //-->
+
+{% endblock content %} 
