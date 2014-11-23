@@ -18,7 +18,7 @@ class DefaultController extends Controller
 
         if ($this->get('session')->get('encontrarPontoDeColeta')) {
             $encontrarPontoDeColeta = $this->get('session')->get('encontrarPontoDeColeta');
-            $encontrarPontoDeColeta->tipoDeLixo = $this->getDoctrine()->getEntityManager()->merge($encontrarPontoDeColeta->tipoDeLixo);
+            $encontrarPontoDeColeta->tipoDeLixo = $this->getDoctrine()->getManager()->merge($encontrarPontoDeColeta->tipoDeLixo);
         } else {
             $encontrarPontoDeColeta = new \Enfi\CienciasDoAmbiente\SiteBundle\ValidationEntity\EncontrarPontoDeColeta;
         }
