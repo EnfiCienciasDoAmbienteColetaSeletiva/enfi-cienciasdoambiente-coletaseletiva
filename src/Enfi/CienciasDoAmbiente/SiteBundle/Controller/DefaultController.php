@@ -54,6 +54,11 @@ class DefaultController extends Controller
     public function mapAction()
     {
         $encontrarPontoDeColeta = $this->get('session')->get('encontrarPontoDeColeta');
+
+        if (!$encontrarPontoDeColeta) {
+            return $this->redirect($this->generateUrl('_home'));
+        }
+
         return array('encontrarPontoDeColeta' => $encontrarPontoDeColeta);
     }
 }

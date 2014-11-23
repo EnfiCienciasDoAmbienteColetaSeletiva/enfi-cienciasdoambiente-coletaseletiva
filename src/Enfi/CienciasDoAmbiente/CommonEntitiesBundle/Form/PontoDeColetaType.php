@@ -19,6 +19,7 @@ class PontoDeColetaType extends AbstractType
             ->add('revision')
             ->add('ativo')
             ->add('endereco')
+            ->add('nome')
             ->add('telefone')
             ->add('horarioDeFuncionamento')
             ->add('latitude')

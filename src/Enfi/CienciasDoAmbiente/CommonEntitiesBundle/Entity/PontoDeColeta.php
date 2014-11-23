@@ -45,6 +45,13 @@ class PontoDeColeta
     /**
      * @var string
      *
+     * @ORM\Column(name="nome", type="text")
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="endereco", type="text")
      */
     private $endereco;
@@ -66,7 +73,7 @@ class PontoDeColeta
     /**
      * @var string
      *
-     * @ORM\Column(name="latitude", type="decimal")
+     * @ORM\Column(name="latitude", type="float")
      */
     private $latitude;
 
@@ -176,6 +183,29 @@ class PontoDeColeta
     public function getAtivo()
     {
         return $this->ativo;
+    }
+
+    /**
+     * Set nome
+     *
+     * @param string $nome
+     * @return PontoDeColeta
+     */
+    public function setNome($nome)
+    {
+        $this->nome = $nome;
+
+        return $this;
+    }
+
+    /**
+     * Get nome
+     *
+     * @return string 
+     */
+    public function getNome()
+    {
+        return $this->nome;
     }
 
     /**
