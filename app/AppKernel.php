@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new SimpleThings\EntityAudit\SimpleThingsEntityAuditBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Enfi\CienciasDoAmbiente\CommonEntitiesBundle\EnfiCienciasDoAmbienteCommonEntitiesBundle(),
+            new Enfi\CienciasDoAmbiente\ApiBundle\EnfiCienciasDoAmbienteApiBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

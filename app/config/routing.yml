@@ -1,8 +1,3 @@
-enfi_ciencias_do_ambiente_common_entities:
-    resource: "@EnfiCienciasDoAmbienteCommonEntitiesBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 # HWIOAuthBundle
 hwi_oauth_redirect:
     resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
@@ -18,6 +13,17 @@ enfi_ciencias_do_ambiente_site:
     resource: "@EnfiCienciasDoAmbienteSiteBundle/Controller/"
     type:     annotation
     prefix:   /
+
+enfi_ciencias_do_ambiente_api:
+    resource: "@EnfiCienciasDoAmbienteApiBundle/Controller/"
+    type:     annotation
+    prefix:   /api/
+
+enfi_ciencias_do_ambiente_commonentities:
+    resource: "@EnfiCienciasDoAmbienteCommonEntitiesBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 
 # Security
 _logout:
