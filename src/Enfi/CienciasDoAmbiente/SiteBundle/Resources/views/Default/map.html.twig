@@ -37,6 +37,21 @@
       });
       var infoWindow = new google.maps.InfoWindow;
 
+      geocoder = new google.maps.Geocoder();
+      geocoder.geocode(
+        {
+            'address': '{{ encontrarPontoDeColeta.endereco }}, Brasil',
+        },
+        function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+          }
+      });
+
       // Change this depending on the name of your PHP file
       downloadUrl("/phpsqlajax_genxml.php", function(data) {
         var xml = data.responseXML;

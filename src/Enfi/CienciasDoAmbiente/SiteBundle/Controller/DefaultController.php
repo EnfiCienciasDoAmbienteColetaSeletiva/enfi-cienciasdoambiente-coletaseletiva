@@ -5,6 +5,7 @@ namespace Enfi\CienciasDoAmbiente\SiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -12,9 +13,24 @@ class DefaultController extends Controller
      * @Route("/", name="_home")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        return array();
+
+        $encontrarPontoDeColeta = new \Enfi\CienciasDoAmbiente\SiteBundle\ValidationEntity\EncontrarPontoDeColeta;
+        $form = $this->createFormBuilder($encontrarPontoDeColeta)
+            ->add('tipoDeLixo', 'entity', array('class' => 'Enfi\CienciasDoAmbiente\CommonEntitiesBundle\Entity\TipoDeLixo', 'property' => 'nome', 'label' => 'Tipo de lixo'))
+            ->add('endereco', null, array('label' => 'Endereço ou CEP'))
+            ->add('submit', 'submit', array('label' => 'Encontre o ponto de coleta mais próximo!'))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $this->get('session')->set('encontrarPontoDeColeta', $encontrarPontoDeColeta);
+            return $this->redirect($this->generateUrl('_map'));
+        }
+
+        return array('form' => $form->createView());
     }
 
     /**
@@ -32,6 +48,7 @@ class DefaultController extends Controller
      */
     public function mapAction()
     {
-        return array();
+        $encontrarPontoDeColeta = $this->get('session')->get('encontrarPontoDeColeta');
+        return array('encontrarPontoDeColeta' => $encontrarPontoDeColeta);
     }
 }

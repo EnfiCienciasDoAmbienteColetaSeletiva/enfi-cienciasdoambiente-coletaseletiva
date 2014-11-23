@@ -1,9 +1,45 @@
 {% extends("EnfiCienciasDoAmbienteSiteBundle::base.html.twig") %}
 
+{% block head %}
+
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6lKObk5KuFvWH32gmRLvApsUbkRGVZAU">
+</script>
+
+<script type="text/javascript">
+
+  // Try HTML5 geolocation
+  if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+          function(position) {
+              var pos = new google.maps.LatLng(position.coords.latitude,
+                                               position.coords.longitude);
+              geocoder = new google.maps.Geocoder();
+              geocoder.geocode(
+                {
+                    'latLng': pos
+                },
+                function(results, status) {
+                  console.log(status);
+                    console.log(results);
+                  if (status == google.maps.GeocoderStatus.OK) {
+                        $('#form_endereco').val(results[0].formatted_address);
+                  }
+              });
+
+          }
+      );
+  }
+
+</script>
+
+{% endblock head %}
+
 {% block content %}
+
       <div class="jumbotron">
         <p class="lead">O jeito fácil de descartar as coisas que você não usa mais!</p>
-        <p><a class="btn btn-lg btn-info" href="{{ path('_map') }}" role="button">Encontre o ponto de coleta mais próximo!</a></p>
+        {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
       </div>
 
       <div class="row marketing">

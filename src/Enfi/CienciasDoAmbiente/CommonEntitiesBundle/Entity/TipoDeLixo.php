@@ -31,7 +31,7 @@ class TipoDeLixo
     /**
      * @var string
      *
-     * @ORM\Column(name="descricao", type="text")
+     * @ORM\Column(name="descricao", type="text", nullable=true)
      */
     private $descricao;
 
