@@ -19,6 +19,7 @@ class PontoDeColetaType extends AbstractType
             ->add('nome', null, array('label' => 'Nome do local'))
             ->add('telefone')
             ->add('horarioDeFuncionamento', null, array('label' => 'Horário de funcionamento'))
+            ->add('informacoesAdicionais', null, array('label' => 'Informações Adicionais'))
             ->add('latitude')
             ->add('longitude')
         ;

@@ -59,14 +59,14 @@ class PontoDeColeta
     /**
      * @var string
      *
-     * @ORM\Column(name="telefone", type="string", length=255)
+     * @ORM\Column(name="telefone", type="string", length=255, nullable=true)
      */
     private $telefone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="horarioDeFuncionamento", type="text")
+     * @ORM\Column(name="horarioDeFuncionamento", type="text", nullable=true)
      */
     private $horarioDeFuncionamento;
 
@@ -104,6 +104,13 @@ class PontoDeColeta
      * @ORM\Column(name="descricaoDasModificacoes", type="text")
      */
     private $descricaoDasModificacoes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="informacoesAdicionais", type="text", nullable=true)
+     */
+    private $informacoesAdicionais;
 
 
     /**
@@ -390,5 +397,28 @@ class PontoDeColeta
     public function getDescricaoDasModificacoes()
     {
         return $this->descricaoDasModificacoes;
+    }
+
+    /**
+     * Set informacoesAdicionais
+     *
+     * @param string $informacoesAdicionais
+     * @return PontoDeColeta
+     */
+    public function setInformacoesAdicionais($informacoesAdicionais)
+    {
+        $this->informacoesAdicionais = $informacoesAdicionais;
+
+        return $this;
+    }
+
+    /**
+     * Get informacoesAdicionais
+     *
+     * @return string 
+     */
+    public function getInformacoesAdicionais()
+    {
+        return $this->informacoesAdicionais;
     }
 }

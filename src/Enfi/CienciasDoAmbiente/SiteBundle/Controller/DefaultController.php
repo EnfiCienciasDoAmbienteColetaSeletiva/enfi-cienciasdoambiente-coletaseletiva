@@ -26,7 +26,7 @@ class DefaultController extends Controller
         $form = $this->createFormBuilder($encontrarPontoDeColeta)
             ->add('tipoDeLixo', 'entity', array('class' => 'Enfi\CienciasDoAmbiente\CommonEntitiesBundle\Entity\TipoDeLixo', 'property' => 'nome', 'label' => 'Tipo de lixo'))
             ->add('endereco', null, array('label' => 'Endereço ou CEP'))
-            ->add('distancia_maxima', 'genemu_jqueryslider', array('label' => 'Raio de busca: ', 'max' => '30'))
+            ->add('distancia_maxima', 'genemu_jqueryslider', array('label' => 'Raio de busca: ', 'max' => '1000'))
             ->add('submit', 'submit', array('label' => 'Encontre o ponto de coleta mais próximo!'))
             ->getForm();
 

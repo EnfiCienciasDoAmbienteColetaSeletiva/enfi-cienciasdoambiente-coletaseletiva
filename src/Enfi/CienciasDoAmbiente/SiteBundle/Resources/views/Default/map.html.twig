@@ -22,6 +22,9 @@
       });
       var infoWindow = new google.maps.InfoWindow;
 
+      google.maps.event.addListener(map, "click", function(event) {
+        infoWindow.close();
+      });
 
       geocoder = new google.maps.Geocoder();
       geocoder.geocode(
@@ -65,7 +68,7 @@
                   parseFloat(markers[i].long)
               )
               bounds.extend(marker_position);
-              var html = "<h3>" + markers[i].name + "</h3><ul><li><b>Endereço:</b> " + markers[i].endereco + "</li><li><b>Telefone:</b> " + markers[i].telefone  + "</li><li><b>Horário de funcionamento:</b> " + markers[i].horarioDeFuncionamento + "</li></ul>"
+              var html = "<h3>" + markers[i].nome + "</h3><ul><li><b>Endereço:</b> " + markers[i].endereco + "</li><li><b>Telefone:</b> " + markers[i].telefone  + "</li><li><b>Horário de funcionamento:</b> " + markers[i].horarioDeFuncionamento + "</li><li><b>Informações adicionais:</b> " + markers[i].informacoesAdicionais + "</ul><small style='color:gray'>(ID #" + markers[i].idFixo + ")</small>";
               var marker = new google.maps.Marker({
                 map: map,
                 position: marker_position,

@@ -64,10 +64,12 @@ class DefaultController extends Controller
             $distancia = $this->distanciaEntreLatLng($p1, $p2);
             if ($distancia <= $distancia_maxima) {
                 $json[] = array(
-                    'name' => $pontoDeColeta->getNome(),
+                    'nome' => $pontoDeColeta->getNome(),
+                    'idFixo' => $pontoDeColeta->getIdFixo(),
+                    'informacoesAdicionais' => ($pontoDeColeta->getInformacoesAdicionais()) ? $pontoDeColeta->getInformacoesAdicionais() : 'N/A',
                     'endereco' => $pontoDeColeta->getEndereco(),
-                    'telefone' => $pontoDeColeta->getTelefone(),
-                    'horarioDeFuncionamento' => $pontoDeColeta->getHorarioDeFuncionamento(),
+                    'telefone' => ($pontoDeColeta->getTelefone()) ? $pontoDeColeta->getTelefone() : 'Indisponível',
+                    'horarioDeFuncionamento' => ($pontoDeColeta->getHorarioDeFuncionamento()) ? $pontoDeColeta->getHorarioDeFuncionamento() : 'Indisponível',
                     'lat' => $pontoDeColeta->getLatitude(),
                     'long' => $pontoDeColeta->getLongitude(),
                     'distancia' => $distancia
