@@ -19,7 +19,9 @@
           <li><a href="{{ url("hwi_oauth_service_redirect", {service: "facebook", destination: "_user"}) }}">Entrar via Facebook</a></li>
           {% endif %}
         </ul>
+        <a href="{{ path('_home') }}">
         <img src="{{ asset('bundles/enficienciasdoambientesite/images/logo-reciclala.png') }}" />
+        </a>
       </div>
 
 {% block content %}{% endblock content %}
