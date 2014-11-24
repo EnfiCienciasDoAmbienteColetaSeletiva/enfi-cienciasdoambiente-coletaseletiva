@@ -1,5 +1,40 @@
 {% extends("EnfiCienciasDoAmbienteCommonEntitiesBundle::base.html.twig") %}
 
+{% block javascripts %}
+
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6lKObk5KuFvWH32gmRLvApsUbkRGVZAU">
+</script>
+
+<script type="text/javascript">
+
+function geocodeAddress(address) {
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode(
+      {
+          'address': address,
+      },
+      function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            lat = results[0].geometry.location.lat();
+            lng = results[0].geometry.location.lng();
+            $('#enfi_cienciasdoambiente_commonentitiesbundle_pontodecoleta_latitude').val(lat);
+            $('#enfi_cienciasdoambiente_commonentitiesbundle_pontodecoleta_longitude').val(lng);
+        }
+    });
+}
+
+$(document).ready(function(){
+    $('#enfi_cienciasdoambiente_commonentitiesbundle_pontodecoleta_endereco')
+    .focusout(function(){
+        geocodeAddress($(this).val());
+    });
+});
+
+</script>
+
+{% endblock javascripts %}
+
 {% block content -%}
     <h1>Alterar Ponto de Coleta</h1>
 
