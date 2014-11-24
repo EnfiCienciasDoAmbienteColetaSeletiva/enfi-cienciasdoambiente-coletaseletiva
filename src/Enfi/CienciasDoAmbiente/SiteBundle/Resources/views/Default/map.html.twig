@@ -58,7 +58,7 @@
 
       // Recupera lista de pontos de coleta
       jQuery.getJSON(
-        '{{ path('api.pontos_de_coleta') }}?lat=' + lat + '&lng=' + lng + '&dist_max={{ encontrarPontoDeColeta.distancia_maxima }}',
+        '{{ path('api.pontos_de_coleta') }}?lat=' + lat + '&lng=' + lng + '&dist_max={{ encontrarPontoDeColeta.distancia_maxima }}&tipo_lixo={{ encontrarPontoDeColeta.tipoDeLixo.id }}',
         null,
         function(data, textStatus) {
             var markers = data;

@@ -26,8 +26,8 @@ class DefaultController extends Controller
         $form = $this->createFormBuilder($encontrarPontoDeColeta)
             ->add('tipoDeLixo', 'entity', array('class' => 'Enfi\CienciasDoAmbiente\CommonEntitiesBundle\Entity\TipoDeLixo', 'property' => 'nome', 'label' => 'Tipo de lixo'))
             ->add('endereco', null, array('label' => 'Endereço ou CEP'))
-            ->add('distancia_maxima', 'genemu_jqueryslider', array('label' => 'Raio de busca: ', 'max' => '1000'))
-            ->add('submit', 'submit', array('label' => 'Encontre o ponto de coleta mais próximo!'))
+            ->add('distancia_maxima', 'genemu_jqueryslider', array('label' => 'Raio de busca: ', 'max' => '50'))
+            ->add('submit', 'submit', array('label' => 'Encontre pontos de coleta!'))
             ->getForm();
 
         $form->handleRequest($request);
@@ -45,6 +45,15 @@ class DefaultController extends Controller
      * @Template()
      */
     public function aboutAction()
+    {
+        return array();
+    }
+
+    /**
+     * @Route("/informativos", name="_informativos")
+     * @Template()
+     */
+    public function informativosAction()
     {
         return array();
     }

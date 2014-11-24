@@ -10,7 +10,8 @@
 
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li><a href="{{ path('_home') }}">Início</a></li>
+          <li><a href="{{ path('_home') }}">Encontre!</a></li>
+          <li><a href="{{ path('_informativos') }}">Informações sobre reciclagem</a></li>
           <li><a href="{{ path('_about') }}">Sobre</a></li>
           {% if is_granted('ROLE_USER') %}
           <li><a href="{{ path('_user') }}">Área restrita</a></li>

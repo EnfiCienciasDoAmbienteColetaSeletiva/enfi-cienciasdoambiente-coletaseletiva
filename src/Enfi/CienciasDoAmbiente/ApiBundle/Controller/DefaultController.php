@@ -58,6 +58,7 @@ class DefaultController extends Controller
         // Posição do usuário
         $p1 = array('lat' => $request->query->get('lat'), 'lng' => $request->query->get('lng'));
         $distancia_maxima = $request->query->get('dist_max') * 1000; // em metros
+        $tipoDeLixo = $this->getDoctrine()->getRepository('EnfiCienciasDoAmbienteCommonEntitiesBundle:TipoDeLixo')->findById($request->query->get('tipo_lixo'));
 
         foreach ($pontosDeColeta as $pontoDeColeta) {
             $p2 = array('lat' => $pontoDeColeta->getLatitude(), 'lng' => $pontoDeColeta->getLongitude());
