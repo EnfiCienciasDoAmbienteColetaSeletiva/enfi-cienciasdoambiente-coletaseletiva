@@ -1,6 +1,18 @@
 {% extends("EnfiCienciasDoAmbienteSiteBundle::base.html.twig") %}
 
-{% block head %}
+{% block stylesheets %}
+    {{ form_stylesheet(form) }}
+{% endblock stylesheets %}
+
+{% block javascripts %}
+
+    {{ form_javascript(form) }}
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#form_distancia_maxima').attr('type', 'text').css({'margin': '0 5px 0 10px', 'display': 'inline', 'width': '20px', 'padding': '0', 'border': 'none', 'background': 'none', 'color': 'white', 'font-weight': 'bold', 'box-shadow': 'none'}).attr('readonly', 'readonly').after('<b>km</b>');
+        });
+    </script>
 
 <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6lKObk5KuFvWH32gmRLvApsUbkRGVZAU">
@@ -33,7 +45,7 @@
 
 </script>
 
-{% endblock head %}
+{% endblock javascripts %}
 
 {% block content %}
 
