@@ -17,7 +17,6 @@
       <div class="header">
         <ul class="nav nav-pills pull-right">
           <li><a href="{{ path('manage_pontodecoleta') }}">Pontos de Coleta</a></li>
-          <li><a href="{{ path('manage_avaliacaodopontodecoleta') }}">Avaliação dos Pontos de Coleta</a></li>
           <li><a href="{{ path('manage_tipodelixo') }}">Tipos de Lixo</a></li>
           {% if is_granted('ROLE_USER') %}
           <li><a href="{{ path('_home') }}">Início</a></li>
@@ -25,15 +24,10 @@
           <li><a href="{{ url("hwi_oauth_service_redirect", {service: "facebook", destination: "_user"}) }}">Entrar via Facebook</a></li>
           {% endif %}
         </ul>
-        <h3 class="text-muted">UFSCar - Ciências do Ambiente para a Engenharia Física</h3>
+        <h3 class="text-muted">Gerenciar Banco de Dados</h3>
       </div>
 
 {% block content %}{% endblock content %}
-
-      <div class="footer">
-        <p>&copy; Cesar Rabahi, Diego Costa, Fernando Tateno, Filipe Hori, Rafael Santos. 2014</p>
-        {{ render(controller('EnfiCienciasDoAmbienteCommonEntitiesBundle:Util:gitVersion')) }}
-      </div>
 
     </div> <!-- /container -->
 

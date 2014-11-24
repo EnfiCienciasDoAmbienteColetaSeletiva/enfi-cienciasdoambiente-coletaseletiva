@@ -1,12 +1,12 @@
 {% extends("EnfiCienciasDoAmbienteCommonEntitiesBundle::base.html.twig") %}
 
 {% block content -%}
-    <h1>TipoDeLixo</h1>
+    <h1>Exibir Tipo de Lixo</h1>
 
-    <table class="record_properties">
+    <table class="record_properties table table-striped">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>#</th>
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
@@ -14,23 +14,14 @@
                 <td>{{ entity.nome }}</td>
             </tr>
             <tr>
-                <th>Descricao</th>
+                <th>Descrição</th>
                 <td>{{ entity.descricao }}</td>
             </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('manage_tipodelixo') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('manage_tipodelixo_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
+    <a href="{{ path('manage_tipodelixo') }}" class="btn btn-info">Cancelar</a>
+    <a href="{{ path('manage_tipodelixo_edit', { 'id': entity.id }) }}" class="btn btn-info"> Alterar </a>
+    {{ form(delete_form) }}
 </ul>
 {% endblock %}

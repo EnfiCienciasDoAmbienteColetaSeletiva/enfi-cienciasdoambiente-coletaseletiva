@@ -16,7 +16,7 @@ class TipoDeLixoType extends AbstractType
     {
         $builder
             ->add('nome')
-            ->add('descricao')
+            ->add('descricao', null, array('label' => 'Descrição'))
         ;
     }
     

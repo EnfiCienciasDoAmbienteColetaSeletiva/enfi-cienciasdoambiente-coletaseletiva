@@ -76,7 +76,7 @@ class TipoDeLixoController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Inserir'));
 
         return $form;
     }
@@ -165,7 +165,7 @@ class TipoDeLixoController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Alterar'));
 
         return $form;
     }
@@ -240,7 +240,7 @@ class TipoDeLixoController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('manage_tipodelixo_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Excluir'))
             ->getForm()
         ;
     }

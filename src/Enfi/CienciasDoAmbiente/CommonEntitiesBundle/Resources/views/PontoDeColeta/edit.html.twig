@@ -1,16 +1,10 @@
 {% extends("EnfiCienciasDoAmbienteCommonEntitiesBundle::base.html.twig") %}
 
 {% block content -%}
-    <h1>PontoDeColeta edit</h1>
+    <h1>Alterar Ponto de Coleta</h1>
 
     {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('manage_pontodecoleta') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
+    <a href="{{ path('manage_pontodecoleta') }}" class="btn btn-info">Cancelar</a>
+    {{ form(delete_form) }}
 </ul>
 {% endblock %}

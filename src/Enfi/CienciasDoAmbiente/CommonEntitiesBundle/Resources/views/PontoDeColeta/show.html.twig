@@ -1,20 +1,16 @@
 {% extends("EnfiCienciasDoAmbienteCommonEntitiesBundle::base.html.twig") %}
 
 {% block content -%}
-    <h1>PontoDeColeta</h1>
+    <h1>Exibir Ponto de Coleta</h1>
 
-    <table class="record_properties">
+    <table class="record_properties table table-striped">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Idfixo</th>
+                <th>ID</th>
                 <td>{{ entity.idFixo }}</td>
             </tr>
             <tr>
-                <th>Revision</th>
+                <th>Revisão</th>
                 <td>{{ entity.revision }}</td>
             </tr>
             <tr>
@@ -22,7 +18,7 @@
                 <td>{{ entity.ativo }}</td>
             </tr>
             <tr>
-                <th>Endereco</th>
+                <th>Endereço</th>
                 <td>{{ entity.endereco }}</td>
             </tr>
             <tr>
@@ -30,7 +26,7 @@
                 <td>{{ entity.telefone }}</td>
             </tr>
             <tr>
-                <th>Horariodefuncionamento</th>
+                <th>Horário de Funcionamento</th>
                 <td>{{ entity.horarioDeFuncionamento }}</td>
             </tr>
             <tr>
@@ -42,31 +38,22 @@
                 <td>{{ entity.longitude }}</td>
             </tr>
             <tr>
-                <th>Usuarioid</th>
+                <th>Usuário</th>
                 <td>{{ entity.usuarioId }}</td>
             </tr>
             <tr>
-                <th>Timestamp</th>
+                <th>Data</th>
                 <td>{{ entity.timestamp|date('d/m/Y h:m') }}</td>
             </tr>
             <tr>
-                <th>Descricaodasmodificacoes</th>
+                <th>Descrição das modificações</th>
                 <td>{{ entity.descricaoDasModificacoes }}</td>
             </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('manage_pontodecoleta') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('manage_pontodecoleta_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
+    <a href="{{ path('manage_pontodecoleta') }}" class="btn btn-info"> Cancelar </a>
+    <a href="{{ path('manage_pontodecoleta_edit', { 'id': entity.id }) }}" class="btn btn-info"> Alterar </a>
+    {{ form(delete_form) }}
 </ul>
 {% endblock %}

@@ -1,15 +1,8 @@
 {% extends("EnfiCienciasDoAmbienteCommonEntitiesBundle::base.html.twig") %}
 
 {% block content -%}
-    <h1>TipoDeLixo creation</h1>
+    <h1>Novo Tipo de Lixo</h1>
 
     {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('manage_tipodelixo') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <a href="{{ path('manage_tipodelixo') }} class="btn btn-info">Cancelar</a>
 {% endblock %}

@@ -37,15 +37,10 @@ $(document).ready(function(){
 
 {% block content -%}
 
-    <h1>PontoDeColeta creation</h1>
+    <h1>Novo Ponto de Coleta</h1>
 
     {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('manage_pontodecoleta') }}">
-            Back to the list
-        </a>
-    </li>
+    <a href="{{ path('manage_pontodecoleta') }}" class="btn btn-info"> Cancelar </a>
 </ul>
 {% endblock %}
