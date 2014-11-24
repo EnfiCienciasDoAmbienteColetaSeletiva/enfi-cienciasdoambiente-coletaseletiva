@@ -21,10 +21,12 @@ class DefaultController extends Controller
             $encontrarPontoDeColeta->tipoDeLixo = $this->getDoctrine()->getManager()->merge($encontrarPontoDeColeta->tipoDeLixo);
         } else {
             $encontrarPontoDeColeta = new \Enfi\CienciasDoAmbiente\SiteBundle\ValidationEntity\EncontrarPontoDeColeta;
+            $encontrarPontoDeColeta->distancia_maxima = 5; // Padrão, 5km
         }
         $form = $this->createFormBuilder($encontrarPontoDeColeta)
             ->add('tipoDeLixo', 'entity', array('class' => 'Enfi\CienciasDoAmbiente\CommonEntitiesBundle\Entity\TipoDeLixo', 'property' => 'nome', 'label' => 'Tipo de lixo'))
             ->add('endereco', null, array('label' => 'Endereço ou CEP'))
+            ->add('distancia_maxima', null, array('label' => 'Raio de busca (em km)'))
             ->add('submit', 'submit', array('label' => 'Encontre o ponto de coleta mais próximo!'))
             ->getForm();
 

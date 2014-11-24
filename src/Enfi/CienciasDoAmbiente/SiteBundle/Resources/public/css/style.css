@@ -1,6 +1,9 @@
 img {
     max-width: 100%;
 }
+#map-canvas img{
+    max-width: none;
+}
 .header img { width: 400px; }
 .header {
     margin-bottom: 20px;

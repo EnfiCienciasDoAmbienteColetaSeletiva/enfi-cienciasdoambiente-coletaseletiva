@@ -12,30 +12,16 @@
     </script>
 
     <script type="text/javascript">
-    var customIcons = {
-      restaurant: {
-        url: 'http://www.beatthetraffic.com/img/trash_icon_solo_rectangular.png',
-        //size: new google.maps.Size(36, 60),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(24, 40)
-      },
-      bar: {
-        url: 'http://www.minininha_maluka.blogger.com.br/celjuu.gif',
-        //size: new google.maps.Size(36, 60),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(24, 40)
-      }
-    };
 
     function initialize() {
+
       var map = new google.maps.Map(document.getElementById("map-canvas"), {
         center: new google.maps.LatLng(-21.984, -47.881),
         zoom: 15,
         mapTypeId: 'roadmap'
       });
       var infoWindow = new google.maps.InfoWindow;
+
 
       geocoder = new google.maps.Geocoder();
       geocoder.geocode(
@@ -44,38 +30,53 @@
         },
         function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
-            map.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
                 map: map,
-                position: results[0].geometry.location
+                position: results[0].geometry.location,
+                icon: '{{ asset('bundles/enficienciasdoambientesite/images/icon-man.png') }}'
             });
+            loadMarkers(map, infoWindow, results[0].geometry.location.lat(), results[0].geometry.location.lng());
           }
       });
 
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    function loadMarkers(map, infoWindow, lat, lng) {
+
+      // Marca os limites do mapa, para poder dar zoom, conforme adiciona-se markers
+      var bounds = new google.maps.LatLngBounds();
+      var user_position = new google.maps.LatLng(
+          parseFloat(lat),
+          parseFloat(lng)
+      )
+      bounds.extend(user_position);
+
       // Recupera lista de pontos de coleta
       jQuery.getJSON(
-        '{{ path('api.pontos_de_coleta') }}',
+        '{{ path('api.pontos_de_coleta') }}?lat=' + lat + '&lng=' + lng + '&dist_max={{ encontrarPontoDeColeta.distancia_maxima }}',
         null,
         function(data, textStatus) {
             var markers = data;
             for (var i = 0; i < markers.length; i++) {
-              var point = new google.maps.LatLng(
+              var marker_position = new google.maps.LatLng(
                   parseFloat(markers[i].lat),
                   parseFloat(markers[i].long)
               )
-              var html = "<b>" + markers[i].name + "</b> <br/>" + markers[i].address;
+              bounds.extend(marker_position);
+              var html = "<h3>" + markers[i].name + "</h3><ul><li><b>Endereço:</b> " + markers[i].endereco + "</li><li><b>Telefone:</b> " + markers[i].telefone  + "</li><li><b>Horário de funcionamento:</b> " + markers[i].horarioDeFuncionamento + "</li></ul>"
               var marker = new google.maps.Marker({
                 map: map,
-                position: point,
-                icon: 'http://mt.google.com/vt/icon/psize=16&font=fonts/arialuni_t.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1&text=' + (i+1)
+                position: marker_position,
+                icon: 'http://mt.google.com/vt/icon?psize=30&font=fonts/arialuni_t.ttf&color=ff304C13&name=icons/spotlight/spotlight-waypoint-a.png&ax=43&ay=48&text=%E2%80%A2'
               });
               bindInfoWindow(marker, map, infoWindow, html);
             }
+            map.fitBounds(bounds);
         }
       );
-
     }
-    google.maps.event.addDomListener(window, 'load', initialize);
 
     function bindInfoWindow(marker, map, infoWindow, html) {
       google.maps.event.addListener(marker, 'click', function() {
@@ -83,8 +84,6 @@
         infoWindow.open(map, marker);
       });
     }
-
-    function doNothing() {}
 
     </script>
 

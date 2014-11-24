@@ -22,7 +22,7 @@ class EncontrarPontoDeColeta
      * @Assert\Regex("~^[0-9]+$~")
      *
      */
-    //public $distancia_maxima;
+    public $distancia_maxima;
 
     /**
      * @var integer
