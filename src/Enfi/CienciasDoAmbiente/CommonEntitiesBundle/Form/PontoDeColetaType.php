@@ -15,18 +15,12 @@ class PontoDeColetaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('idFixo', null, array('label' => 'ID'))
-            ->add('revision', null, array('label' => 'Revisão'))
-            ->add('ativo', null, array('label' => 'Ativo'))
             ->add('endereco', null, array('label' => 'Endereço'))
             ->add('nome', null, array('label' => 'Nome do local'))
             ->add('telefone')
             ->add('horarioDeFuncionamento', null, array('label' => 'Horário de funcionamento'))
             ->add('latitude')
             ->add('longitude')
-            ->add('usuarioId', null, array('label' => 'Código do usuário'))
-            ->add('timestamp', null, array('label' => 'Horário de inserção'))
-            ->add('descricaoDasModificacoes', null, array('label' => 'Descrição das modificações'))
         ;
     }
     

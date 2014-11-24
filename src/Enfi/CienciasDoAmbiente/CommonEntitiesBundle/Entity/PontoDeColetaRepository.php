@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class PontoDeColetaRepository extends EntityRepository
 {
+    public function getMaxIdFixo() {
+        $result =  $this->getEntityManager()
+                    ->createQuery("SELECT MAX(p.idFixo) FROM EnfiCienciasDoAmbienteCommonEntitiesBundle:PontoDeColeta p")->getSingleResult();
+        return (int) $result[1];
+    }
+
+    public function getMaxRevision($idFixo) {
+        $result =  $this->getEntityManager()
+                    ->createQuery("SELECT MAX(p.revision) FROM EnfiCienciasDoAmbienteCommonEntitiesBundle:PontoDeColeta p WHERE p.idFixo = '$idFixo'")->getSingleResult();
+        return (int) $result[1];
+    }
 }

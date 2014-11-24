@@ -49,6 +49,19 @@ class PontoDeColetaController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
+            // Load pontos de coleta
+            $repository = $this->getDoctrine()
+                ->getRepository('EnfiCienciasDoAmbienteCommonEntitiesBundle:PontoDeColeta');
+
+            $idFixo = $repository->getMaxIdFixo()+1;
+            $entity->setIdFixo($idFixo);
+            $entity->setRevision($repository->getMaxRevision($idFixo)+1);
+            $entity->setAtivo(1);
+            $entity->setUsuarioId(1);
+            $entity->setTimestamp(new \DateTime('now'));
+            $entity->setDescricaoDasModificacoes('Novo registro.');
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
